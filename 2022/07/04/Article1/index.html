@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>Article1 | Hexo</title>
+  <title>Node.js Install | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="$$\mathbf{V}_1 \times \mathbf{V}_2 &#x3D;  \begin{vmatrix}\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \\frac{\partial X}{\partial u} &amp;  \frac{\partial Y}{\partial u} &amp; 0 \\frac{\partial X}{\p">
+  <meta name="description" content="Basic Step1.First Install from the Official Website2.Install Reference Install   Solve WARNnpm WARN config global &#96;--global&#96;, &#96;--local&#96; are deprecated. Use &#96;--location&#x3D;global&#96; instead   My initial ver">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Article1">
+<meta property="og:title" content="Node.js Install">
 <meta property="og:url" content="http://example.com/2022/07/04/Article1/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="$$\mathbf{V}_1 \times \mathbf{V}_2 &#x3D;  \begin{vmatrix}\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \\frac{\partial X}{\partial u} &amp;  \frac{\partial Y}{\partial u} &amp; 0 \\frac{\partial X}{\p">
+<meta property="og:description" content="Basic Step1.First Install from the Official Website2.Install Reference Install   Solve WARNnpm WARN config global &#96;--global&#96;, &#96;--local&#96; are deprecated. Use &#96;--location&#x3D;global&#96; instead   My initial ver">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-07-04T01:26:58.000Z">
-<meta property="article:modified_time" content="2022-07-04T01:38:10.994Z">
+<meta property="article:modified_time" content="2022-07-04T09:38:59.092Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -87,7 +87,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      Article1
+      Node.js Install
     </h1>
   
 
@@ -95,12 +95,34 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>$$<br>\mathbf{V}_1 \times \mathbf{V}_2 &#x3D;  \begin{vmatrix}<br>\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \<br>\frac{\partial X}{\partial u} &amp;  \frac{\partial Y}{\partial u} &amp; 0 \<br>\frac{\partial X}{\partial v} &amp;  \frac{\partial Y}{\partial v} &amp; 0 \<br>\end{vmatrix}<br>$$</p>
-<h1 id="This-is-an-H1"><a href="#This-is-an-H1" class="headerlink" title="This is an H1"></a>This is an H1</h1><h2 id="This-is-an-H2"><a href="#This-is-an-H2" class="headerlink" title="This is an H2"></a>This is an H2</h2><h6 id="This-is-an-H6"><a href="#This-is-an-H6" class="headerlink" title="This is an H6"></a>This is an H6</h6>
+        <h2 id="Basic-Step"><a href="#Basic-Step" class="headerlink" title="Basic Step"></a>Basic Step</h2><p>1.First Install from the <a target="_blank" rel="noopener" href="https://nodejs.org/en/">Official Website</a><br>2.Install <a target="_blank" rel="noopener" href="https://blog.csdn.net/Small_Yogurt/article/details/104968169">Reference Install</a>  </p>
+<h2 id="Solve-WARN"><a href="#Solve-WARN" class="headerlink" title="Solve WARN"></a>Solve WARN</h2><p><code>npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead </code> </p>
+<h5 id="My-initial-version-is-8-11-windows-10"><a href="#My-initial-version-is-8-11-windows-10" class="headerlink" title="My initial version is 8.11, windows 10."></a>My initial version is 8.11, windows 10.</h5><p>A common solution is to edit <code>npm.cmd</code>, change <code>prefix -g</code> to <code>prefix --location=global</code>.<br>However, this doesn’t work well for my version. Because when I test <code>npm install express -g</code>, this problem still exists.<br>The main problem is the version, the new ver has already solved it. So, what we need to do is to update.<br><strong>But</strong>, on windows, you cannot directly input <code>nmp install -g npm</code> on cmd.<br>Below is what I did to solve this. <a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_59751822/article/details/125229851?spm=1001.2014.3001.5502">Reference</a>  </p>
+<h4 id="Step-1-Complete-the-configuration-of-environment-variables"><a href="#Step-1-Complete-the-configuration-of-environment-variables" class="headerlink" title="Step 1. Complete the configuration of environment variables"></a>Step 1. Complete the configuration of environment variables</h4><ol>
+<li>Create two folders<code>node_global</code> and <code>node_cache</code> in your nodejs installation directory, create one folder <code>node_modules</code> under the <code>node_global</code> folder.  </li>
+<li>open cmd, do what shown below.</li>
+</ol>
+<pre><code>npm config set prefix &quot;创建的node_global文件夹所在路径&quot;  
+npm config set cache &quot;创建的node_cache文件夹所在路径&quot;  
+</code></pre>
+<ol start="3">
+<li>In Environment Variables<br>3.1 In System Variables<br>Create a new variable named <code>NODE_PATH</code>, the variable value  is the location of the new <code>node_modules</code> you created.<br>3.2 In System Variables<br>Open the variable named  <code>path</code>, add two new address <code>Your nodejs directory\node_global</code> and <code>%NODE_PATH%</code>.<br>3.3 In User Variable<br>Open the variable named  <code>path</code>, change the address like <code>......\Roaming\npm</code> to <code>Your nodejs directory\node_global</code><br>3.4 Save your changes</li>
+</ol>
+<h4 id="Step-2-Open-the-permission-of-your-node-js-directory"><a href="#Step-2-Open-the-permission-of-your-node-js-directory" class="headerlink" title="Step 2. Open the permission of your node.js  directory."></a>Step 2. Open the permission of your node.js  directory.</h4><h4 id="Step-3-Main-Progress"><a href="#Step-3-Main-Progress" class="headerlink" title="Step 3. Main Progress"></a>Step 3. Main Progress</h4><h5 id="3-1-Operations-on-cmd"><a href="#3-1-Operations-on-cmd" class="headerlink" title="3.1  Operations on cmd"></a>3.1  Operations on cmd</h5><ol>
+<li>Type “cmd” in the search box on the desktop taskbar and click “Run as administrator”.</li>
+<li>input <code>npm install -g npm-windows-upgrade</code>, you should see the <strong>WARN</strong>.</li>
+</ol>
+<h5 id="3-2-Operations-on-Windows-PoweShell"><a href="#3-2-Operations-on-Windows-PoweShell" class="headerlink" title="3.2 Operations on Windows PoweShell"></a>3.2 Operations on Windows PoweShell</h5><ol>
+<li>Still, “Run as administrator”.</li>
+<li>Type <code>set-ExecutionPolicy RemoteSigned</code>, Press enter and the option to change the enforcement policy will be displayed; we type <code>Y</code> and press enter; </li>
+<li>Type <code>npm-windows-upgrade</code>;then each version will be displayed, use the arrow keys ↑ ↓ to select, default is the newest version, so just press enter. Wait a few moments and the update will be completed.</li>
+</ol>
+<h5 id="3-3-Test"><a href="#3-3-Test" class="headerlink" title="3.3 Test"></a>3.3 Test</h5><p>We type <code>npm -v</code> in the command prompt box and we can see that even if we don’t change the npm.cmd file, we won’t get an error</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/07/04/Article1/" data-id="cl562y1xb0001e8vdec1399c8" data-title="Article1" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/07/04/Article1/" data-id="cl56jxcsa0001scvdcon937g6" data-title="Node.js Install" class="article-share-link">Share</a>
       
       
       
@@ -151,7 +173,7 @@
       <ul>
         
           <li>
-            <a href="/2022/07/04/Article1/">Article1</a>
+            <a href="/2022/07/04/Article1/">Node.js Install</a>
           </li>
         
           <li>
